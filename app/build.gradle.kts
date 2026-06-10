@@ -56,4 +56,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation("androidx.navigation:navigation-compose:2.8.8")
+    implementation("com.google.zxing:core:3.5.3")
+
+
 }
