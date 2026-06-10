@@ -25,12 +25,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.store.R
+import com.example.store.app.navegation.Routes
 import com.example.store.feature.store.presetation.component.icons
 
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier, onClick: () -> Unit){
+fun LoginScreen(modifier: Modifier = Modifier,
+                navController: NavController){
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -42,21 +45,19 @@ fun LoginScreen(modifier: Modifier = Modifier, onClick: () -> Unit){
 
     ) {
 
-       LoginCabecalho()
+        LoginCabecalho()
 
-       Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
-       LoginForm()
+        LoginForm()
 
-       Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(30.dp))
 
-       LoginButtons(onClick = onClick)
+        LoginButtons(navController = navController)
 
         Spacer(modifier = Modifier.height(16.dp))
 
-
-        icons(
-        )
+        icons()
     }
 }
 
@@ -145,16 +146,16 @@ private fun LoginForm(){
 }
 
 @Composable
-private fun LoginButtons(onClick: () -> Unit){
+private fun LoginButtons(navController: NavController){
     Button(
-        onClick = onClick,
+        onClick = {navController.navigate(Routes.Home.route)},
         modifier = Modifier
             .fillMaxWidth(0.6f)
             .height(50.dp),
         shape = RoundedCornerShape(12.dp),
         colors = ButtonDefaults.buttonColors(containerColor = colorIcon, contentColor = Color.White)
     ) { Text(
-        "Sing up",
+        "Sign up",
         fontSize = 18.sp
     )
     }
