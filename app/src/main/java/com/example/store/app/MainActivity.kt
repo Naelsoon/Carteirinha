@@ -4,18 +4,21 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.ui.Modifier
 import com.example.store.app.navegation.App
-import com.example.store.app.navegation.Routes
 import com.example.store.core.designsystem.theme.StoreTheme
-import com.example.store.feature.store.presetation.screen.LoginScreen
+import com.example.store.core.network.SessionManager
+import com.example.store.core.network.TokenManager
+import com.example.store.feature.professor.data.repository.NotasRepository
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inicialização dos serviços de dados e sessão
+        TokenManager.init(applicationContext)
+        SessionManager.init(applicationContext)
+        NotasRepository.init(applicationContext)
+
         enableEdgeToEdge()
         setContent {
             StoreTheme {
@@ -24,8 +27,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-
-
-
-
